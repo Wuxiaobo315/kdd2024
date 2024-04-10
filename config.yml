@@ -1,0 +1,7 @@
+Round: 1000
+Local_epoch: 5 
+Local_data_volume: 500
+Optimizer: SGD
+Learning_rate: 0.01
+Loss_function: Cross_entropy
+Participant_ratio_: 20%
