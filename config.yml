@@ -8,3 +8,5 @@ Participant_ratio_: 20%
 window_size: 20
 evaluation_number: 15
 slope_threshold: 0.2
+dataset: CIFAR10
+model: ResNet
