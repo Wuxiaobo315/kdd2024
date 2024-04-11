@@ -88,7 +88,7 @@ class LocalUpdate(object):
         optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9,
                               weight_decay=5e-4)
         gradients = []
-        accumulated_gradients = None  # 存储累计梯度的变量
+        accumulated_gradients = None 
         for iter in range(self.args.local_ep):
             batch_loss = []
             for batch_idx, (images, labels) in enumerate(self.trainloader):
@@ -198,7 +198,7 @@ class LocalUpdate_shrinking(object):
         optimizer = torch.optim.SGD(model_shrinking.parameters(), lr=0.00001, momentum=0.9,
                               weight_decay=5e-4)
 
-        accumulated_gradients = None  # 存储累计梯度的变量
+        accumulated_gradients = None 
         for iter in range(5):
             batch_loss = []
             for batch_idx, (images, labels) in enumerate(self.trainloader):
@@ -259,7 +259,7 @@ class LocalUpdate_shrinking(object):
 
 def get_activations(model, inputs,activations):
     x = inputs
-    # 遍历模型的每一层，获取激活值
+
     for name,module in model.named_children():
 
         if name == 'fc':
@@ -311,8 +311,8 @@ def test_inference(args, model,reference_model ,test_dataset):
 
     all_CKA = []
 
-    activations_model = 0  # 保存模型每层的激活
-    activations_reference = 0  # 保存参考模型每层的激活
+    activations_model = 0
+    activations_reference = 0  
 
     device = 'cuda' if args.gpu else 'cpu'
     criterion = nn.CrossEntropyLoss().to(device)
@@ -333,10 +333,10 @@ def test_inference(args, model,reference_model ,test_dataset):
         loss += batch_loss.item()
 
         if batch_idx%5==0:
-            # 保存模型每层的激活
+     
             activations_model= (get_activations(model, images, model_activations))
 
-            # 保存参考模型每层的激活
+ 
             activations_reference = (get_activations(reference_model, images, ref_activations))
         # Prediction
         _, pred_labels = torch.max(outputs, 1)
