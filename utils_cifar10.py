@@ -19,9 +19,9 @@ def get_dataset(args):
         data_dir = '../data/cifar/'
         train_trans = transforms.Compose([
             transforms.ToTensor()
-            , transforms.RandomCrop(32, padding=4)  # 先四周填充0，在吧图像随机裁剪成32*32
-            , transforms.RandomHorizontalFlip(p=0.5)  # 随机水平翻转 选择一个概率概率
-            , transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])  # 均值，标准差
+            , transforms.RandomCrop(32, padding=4) 
+            , transforms.RandomHorizontalFlip(p=0.5) 
+            , transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
         ])
 
         apply_transform = transforms.Compose(
