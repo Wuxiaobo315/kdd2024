@@ -213,11 +213,11 @@ def cifar_noniid(dataset, num_users):
 #     Phi = np.random.binomial(1, p, size=(num_users, num_classes))  # indicate the classes chosen by each client
 #     n_classes_per_client = np.sum(Phi, axis=1)
 #     while np.min(n_classes_per_client) == 0:
-#         invalid_idx = np.where(n_classes_per_client==0)[0]#把一个class没有的对应的client的ID找出来
-#         Phi[invalid_idx] = np.random.binomial(1, p, size=(len(invalid_idx), num_classes))#重新为这些client生成应该有的class
+#         invalid_idx = np.where(n_classes_per_client==0)[0]
+#         Phi[invalid_idx] = np.random.binomial(1, p, size=(len(invalid_idx), num_classes))
 #         n_classes_per_client = np.sum(Phi, axis=1)
-#     Psi = [list(np.where(Phi[:, j]==1)[0]) for j in range(num_classes)]   # indicate the clients that choose each class(比如第一个class 有哪些用户拥有）
-#     num_clients_per_class = np.array([len(x) for x in Psi])#每个类有多少用户拥有
+#     Psi = [list(np.where(Phi[:, j]==1)[0]) for j in range(num_classes)]  
+#     num_clients_per_class = np.array([len(x) for x in Psi])
 #     dict_users = {}
 #     for class_i in range(num_classes):
 #         all_idxs = np.where(y_train==class_i)[0]
